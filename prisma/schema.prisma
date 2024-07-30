@@ -1,0 +1,26 @@
+datasource db {
+    provider = "mysql"
+    url      = env("DATABASE_URL")
+}
+
+generator client {
+    provider = "prisma-client-js"
+}
+
+model Pembayaran {
+    id               String   @id @default(uuid())
+    type             String
+    client_id        String
+    trx_id           String
+    trx_amount       String
+    billing_type     String
+    customer_name    String
+    customer_email   String
+    customer_phone   String
+    virtual_account  String
+    datetime_expired DateTime
+    datetime_payment DateTime?
+    description      String
+    updatedAt        DateTime @updatedAt
+    createdAt        DateTime @default(now())
+}
